@@ -73,7 +73,7 @@
 <% end -%>
 <% if @wait_for_rebalance then %>      wait_for_rebalance: <%= @wait_for_rebalance %>
 <% end -%><% if @extra_settings then -%>
-        extra_settings: <%= @extra_settings.to_yaml.gsub(/---/, '').gsub(/^/, '         ') %>
+      extra_settings: <%= @extra_settings.to_yaml.gsub(/---/, '').gsub(/^/, '          ') %>
 <% end -%>
 <% if @for_alias_only_TBD then -%>
     add/remove:
