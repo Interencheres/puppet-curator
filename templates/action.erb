@@ -74,7 +74,7 @@
 <% if @wait_for_rebalance then %>      wait_for_rebalance: <%= @wait_for_rebalance %>
 <% end -%><% if @extra_settings then %>
       extra_settings: <% @extra_settings.each do |arrayValue| -%>
-    <%= arrayValue -%><% @extra_settings[arrayValue].each do |key, value| %>
+    <%= arrayValue %><% @extra_settings[arrayValue].each do |key, value| %>
         <%= key -%>: <%= value %>
 <% end -%>
 <% if @for_alias_only_TBD then -%>
