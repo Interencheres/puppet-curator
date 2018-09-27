@@ -72,12 +72,8 @@
 <% if @wait_for_active_shards then %>      wait_for_active_shards: <%= @wait_for_active_shards %>
 <% end -%>
 <% if @wait_for_rebalance then %>      wait_for_rebalance: <%= @wait_for_rebalance %>
-<% end -%><% if @extra_settings then %>
-      extra_settings: <% @extra_settings.each do |arrayValue| -%>
-    <%= arrayValue %><% @extra_settings[arrayValue].each do |key, value| %>
-        <%= key -%>: <%= value %>
-<% end -%>
-<% end -%>
+<% end -%><% if @extra_settings then -%>
+        extra_settings: <%= @extra_settings.to_yaml.gsub(/---/, '').gsub(/^/, '         ') %>
 <% end -%>
 <% if @for_alias_only_TBD then -%>
     add/remove:
