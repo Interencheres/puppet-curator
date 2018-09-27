@@ -88,6 +88,10 @@
 #   Boolean.  Curator will action for index being shrunk and not wait for the cluster to fully rebalance all shards.
 #   Default: undef
 #
+# [*extra_settings*]
+#   Array. Read more about there setting at https://www.elastic.co/guide/en/elasticsearch/client/curator/current/option_extra_settings.html#_link_linkend_shrink_shrink_link
+#   Default: undef
+#
 #  ___TBC___
 #
 # [*filters*]
@@ -104,7 +108,7 @@ define curator::action (
   $delete_after           = undef,
   $delete_aliases         = undef,
   $disable_action         = 'False',
-  # $extra_settings = undef, #We don't support $extra_settings yet
+  $extra_settings         = undef, # We support $extra_settings for shrink only
   $ignore_empty_list      = 'False',
   $ignore_unavailable     = undef,
   $include_aliases        = undef,
@@ -197,7 +201,7 @@ define curator::action (
 
   if ($copy_aliases or $delete_after or $shrink_node or $node_filters or
   $number_of_shards or $number_of_replicas or $post_allocation or $shrink_prefix or
-  $shrink_suffix or $wait_for_active_shards or $wait_for_rebalance) and $action != 'shrink' {
+  $shrink_suffix or $wait_for_active_shards or $wait_for_rebalance or $extra_settings) and $action != 'shrink' {
     fail('This action can be set only for action = shrink')
   }
 
